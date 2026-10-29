@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The bar itself. One template, called from one place, the order total,
+         so the cart page and every checkout page speak with the same voice,
+         and so the AJAX path needs no code of its own: the shop re-renders the
+         total after a quantity change, and this template is part of that
+         render. A bar kept outside the total would keep the old amount until
+         the next page load, which is exactly the stale bar this module is
+         supposed to avoid.
+         The amount is spelled by the model (formatLang, with the cart's
+         currency) rather than by a monetary widget: the sentence it sits in has
+         to be translatable as a whole, and a placeholder inside a formatted
+         number breaks word order in half the languages. -->
+    <template id="fsb_bar" name="Free Delivery Progress Bar">
+        <t t-set="fsb" t-value="website_sale_order and website_sale_order._fsb_progress()"/>
+        <div t-if="fsb" class="o_fsb_bar mb-3" role="status"
+             t-att-data-fsb-reached="'1' if fsb['reached'] else '0'"
+             t-att-data-fsb-remaining="fsb['remaining']"
+             t-att-data-fsb-percent="fsb['percent']">
+            <div class="o_fsb_bar_label small mb-1" t-out="fsb['label']"/>
+            <div class="progress o_fsb_bar_track" style="height: 8px;"
+                 role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                 t-att-aria-valuenow="fsb['percent']">
+                <div t-att-class="'progress-bar' + (' bg-success' if fsb['reached'] else '')"
+                     t-att-style="'width: ' + str(fsb['percent']) + '%;'"/>
+            </div>
+        </div>
+    </template>
+
+    <!-- Above the total, inside the summary card: the shopper reads "add 20
+         more" and the total it refers to in one glance.
+         Up to 18.0 the total is a div with a fixed id, and the shop replaces
+         that div wholesale after a quantity change, which is what makes the
+         bar follow an AJAX update without a line of JavaScript. 19.0 and 20.0
+         name the class and the table instead; their copy matches those. -->
+    <template id="fsb_total" inherit_id="website_sale.total"
+              name="Free Delivery Bar in the Cart">
+        <xpath expr="//div[@id='cart_total']/table" position="before">
+            <t t-call="website_sale_free_shipping_bar.fsb_bar"/>
+        </xpath>
+    </template>
+
+    <!-- 17.0 and 18.0 draw the first checkout step (the address form) without
+         the order summary, so a bar living only inside the total would never
+         reach the page the shopper lands on after "Process Checkout". It is
+         put at the top of the form column instead; the steps that follow carry
+         it inside the total, exactly like the cart does. 16.0 puts the summary
+         on its address page and 19.0 rebuilt it on the checkout layout, so
+         neither needs this second anchor. -->
+    <template id="fsb_address" inherit_id="website_sale.address"
+              name="Free Delivery Bar on the Address Step">
+        <xpath expr="//div[hasclass('oe_cart')]/*[1]" position="before">
+            <t t-call="website_sale_free_shipping_bar.fsb_bar"/>
+        </xpath>
+    </template>
+
+</odoo>
