@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The bar itself. One template, called from one place, the order total,
+         so the cart page and every checkout page speak with the same voice,
+         and so the AJAX path needs no code of its own: the shop re-renders the
+         total after a quantity change, and this template is part of that
+         render. A bar kept outside the total would keep the old amount until
+         the next page load, which is exactly the stale bar this module is
+         supposed to avoid.
+         The amount is spelled by the model (formatLang, with the cart's
+         currency) rather than by a monetary widget: the sentence it sits in has
+         to be translatable as a whole, and a placeholder inside a formatted
+         number breaks word order in half the languages. -->
+    <template id="fsb_bar" name="Free Delivery Progress Bar">
+        <t t-set="fsb" t-value="website_sale_order and website_sale_order._fsb_progress()"/>
+        <div t-if="fsb" class="o_fsb_bar mb-3" role="status"
+             t-att-data-fsb-reached="'1' if fsb['reached'] else '0'"
+             t-att-data-fsb-remaining="fsb['remaining']"
+             t-att-data-fsb-percent="fsb['percent']">
+            <div class="o_fsb_bar_label small mb-1" t-out="fsb['label']"/>
+            <div class="progress o_fsb_bar_track" style="height: 8px;"
+                 role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                 t-att-aria-valuenow="fsb['percent']">
+                <div t-att-class="'progress-bar' + (' bg-success' if fsb['reached'] else '')"
+                     t-att-style="'width: ' + str(fsb['percent']) + '%;'"/>
+            </div>
+        </div>
+    </template>
+
+    <!-- Above the total, inside the summary card: the shopper reads "add 20
+         more" and the total it refers to in one glance.
+         19.0 carries the total in a div whose class is built by `t-attf-class`
+         (`o_cart_total`), so it has no static class to match on; the table
+         inside it does. 16.0 to 18.0 match `#cart_total` in their own copy. -->
+    <template id="fsb_total" inherit_id="website_sale.total"
+              name="Free Delivery Bar in the Cart">
+        <xpath expr="//div[contains(@t-attf-class, 'o_cart_total')]/table"
+               position="before">
+            <t t-call="website_sale_free_shipping_bar.fsb_bar"/>
+        </xpath>
+    </template>
+
+</odoo>
