@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The threshold is per website: two shops on one database may ship on
+         different terms, and the switch is the merchant's, not the theme's.
+         Up to 13.0 the settings form has no notebook yet: it is a sheet of
+         named divs, so the settings are added as a block of their own after
+         the "Other Info" one. -->
+    <record id="view_website_form_free_shipping" model="ir.ui.view">
+        <field name="name">website.form.free.shipping</field>
+        <field name="model">website</field>
+        <field name="inherit_id" ref="website.view_website_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='other']" position="after">
+                <group string="Free Delivery" name="free_shipping">
+                    <field name="fsb_free_shipping_enabled"/>
+                    <field name="fsb_free_shipping_threshold"
+                           placeholder="e.g. 50.00"/>
+                    <field name="fsb_amount_basis"/>
+                    <div colspan="2" class="text-muted">
+                        The bar counts the goods in the cart, never the delivery
+                        line. Leave the threshold at zero, or switch the bar
+                        off, to say nothing about free delivery on this site.
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
