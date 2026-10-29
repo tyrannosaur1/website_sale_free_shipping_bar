@@ -39,7 +39,7 @@
     <template id="fsb_total" inherit_id="website_sale.total"
               name="Free Delivery Bar in the Cart">
         <xpath expr="//div[@id='cart_total']/table" position="before">
-            <t t-call="website_sale_free_shipping_bar.fsb_bar"/>
+            <t t-call="bs_free_shipping_bar.fsb_bar"/>
         </xpath>
     </template>
 
