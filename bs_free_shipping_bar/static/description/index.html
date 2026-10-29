@@ -1,0 +1,47 @@
+<div style="max-width:880px;margin:0 auto;padding:8px 4px 24px;color:#2b2b2b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.65">
+<div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#017E84;font-weight:600">Odoo &#183; Website / eCommerce</div>
+<div style="font-size:38px;line-height:1.2;margin:10px 0 14px;font-weight:700">Free Delivery Progress Bar</div>
+<div style="font-size:18px;color:#6b6b6b;margin:0 0 20px;max-width:660px">A shopper who is twenty short of free delivery is a shopper who will find one more thing to buy, if the shop says so at the moment they are looking at the cart. This module says it, and stops saying it the moment the cart is above the threshold.</div>
+
+<div style="margin:0 0 4px"><span style="display:inline-block;font-size:12.5px;padding:5px 12px;border-radius:999px;background:#faf7f8;border:1px solid #e7e3e5;color:#524a4f;margin:0 8px 8px 0;white-space:nowrap">website_sale + delivery</span><span style="display:inline-block;font-size:12.5px;padding:5px 12px;border-radius:999px;background:#faf7f8;border:1px solid #e7e3e5;color:#524a4f;margin:0 8px 8px 0;white-space:nowrap">Cart and checkout</span><span style="display:inline-block;font-size:12.5px;padding:5px 12px;border-radius:999px;background:#faf7f8;border:1px solid #e7e3e5;color:#524a4f;margin:0 8px 8px 0;white-space:nowrap">OPL-1</span></div>
+
+<div style="display:flex;flex-wrap:wrap;gap:16px;margin:36px 0 8px">
+<div style="flex:1 1 220px;min-width:200px;border:1px solid #e7e3e5;border-radius:10px;padding:20px;background:#fff"><div style="font-size:15px;font-weight:600;margin:0 0 6px">Goods only, always</div><div style="font-size:13.5px;color:#6b6b6b">The bar measures what the customer is buying. The delivery line is what the carrier charges, so it never counts towards free delivery, and a cart holding nothing else claims no progress at all.</div></div>
+<div style="flex:1 1 220px;min-width:200px;border:1px solid #e7e3e5;border-radius:10px;padding:20px;background:#fff"><div style="font-size:15px;font-weight:600;margin:0 0 6px">Written in the cart's currency</div><div style="font-size:13.5px;color:#6b6b6b">The threshold is entered in the currency the site sells in. If a pricelist prices the cart in another one, the amount is converted, so the sentence is never about money the shopper is not spending.</div></div>
+<div style="flex:1 1 220px;min-width:200px;border:1px solid #e7e3e5;border-radius:10px;padding:20px;background:#fff"><div style="font-size:15px;font-weight:600;margin:0 0 6px">No stale bar</div><div style="font-size:13.5px;color:#6b6b6b">Changing a quantity in the cart redraws the summary in place. The bar is part of that redraw, so it never keeps the amount from before the change.</div></div>
+</div>
+
+<div style="font-size:22px;font-weight:700;margin:52px 0 4px">What the customer sees</div>
+<div style="display:flex;flex-wrap:wrap;gap:0 28px;margin-top:6px">
+<div style="flex:1 1 300px;min-width:260px;font-size:14px;padding:8px 0"><span style="color:#017E84;font-weight:700;margin-right:9px">&#10003;</span>Below the threshold, a sentence with the amount still missing and a bar filled in proportion</div>
+<div style="flex:1 1 300px;min-width:260px;font-size:14px;padding:8px 0"><span style="color:#017E84;font-weight:700;margin-right:9px">&#10003;</span>At or above it, one sentence and a full bar, with no amount mentioned at all</div>
+<div style="flex:1 1 300px;min-width:260px;font-size:14px;padding:8px 0"><span style="color:#017E84;font-weight:700;margin-right:9px">&#10003;</span>The bar sits above the order total, in the cart and on every checkout step that shows the summary</div>
+<div style="flex:1 1 300px;min-width:260px;font-size:14px;padding:8px 0"><span style="color:#017E84;font-weight:700;margin-right:9px">&#10003;</span>Nothing on an empty cart, nothing while the feature is off, nothing when the threshold is zero</div>
+</div>
+
+<div style="font-size:22px;font-weight:700;margin:48px 0 4px">How it is configured</div>
+<div style="font-size:14px;color:#3f3f3f;margin-top:10px">Three fields on the website, under <em>Website &#8250; Configuration &#8250; Settings &#8250; Free Delivery</em>:</div>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:10px"><tbody>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">Free Delivery Bar</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">The switch. Off by default: a shop that has not said anything about free delivery must not start promising one.</td></tr>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">Free Delivery Threshold</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">The amount, in the website currency, at which delivery becomes free. Zero turns the bar off, exactly like the switch.</td></tr>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">Amount Compared</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">Whether the goods total is read tax excluded or tax included. Delivery is excluded either way.</td></tr>
+</tbody></table>
+
+<div style="font-size:22px;font-weight:700;margin:48px 0 4px">The edges, stated plainly</div>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:10px"><tbody>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">A cart with only delivery in it</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">No bar. Nothing has been bought, so nothing is on its way to free delivery, and a cart holding a delivery charge is not a purchase.</td></tr>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">Exactly at the threshold</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">Free delivery, full bar. The comparison is made on the currency's rounding grid, so 99.9999 of a two-decimal currency is at the threshold, not a hair below it.</td></tr>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">One cent short</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">The sentence asks for that one cent, not for the whole threshold. The amount shown is the difference, rounded like the currency it is printed in.</td></tr>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">Core's own delivery message</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">Left alone. The delivery method's "free shipping from" note still appears where it does; this module adds the running total, it does not replace the carrier's terms.</td></tr>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">Confirmed orders</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">No bar: it speaks to a cart, not to an order that has already been placed.</td></tr>
+</tbody></table>
+
+<div style="font-size:22px;font-weight:700;margin:48px 0 4px">Technical details</div>
+<table style="width:100%;border-collapse:collapse;font-size:14px"><tbody>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">Depends on</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">website_sale, delivery</td></tr>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">License</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">OPL-1</td></tr>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">Configure</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">Website &#8250; Configuration &#8250; Settings &#8250; Free Delivery</td></tr>
+<tr><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5;background:#faf7f8;font-weight:600;color:#524a4f;width:34%">Install</td><td style="padding:10px 12px;border-bottom:1px solid #e7e3e5">Apps &#8594; Update Apps List &#8594; search &#8220;Free Delivery Progress Bar&#8221; &#8594; Install</td></tr>
+</tbody></table>
+<div style="border-top:1px solid #e7e3e5;margin-top:44px;padding-top:14px;font-size:12.5px;color:#8a8189">bs_free_shipping_bar &#183; ModForge</div>
+</div>
