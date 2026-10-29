@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- The bar itself. One template, called from one place, the order total,
+         so the cart page and every checkout page speak with the same voice,
+         and so the AJAX path needs no code of its own: the shop re-renders the
+         summary after a quantity change, and this template is part of that
+         render. A bar kept outside the summary would keep the old amount until
+         the next page load, which is exactly the stale bar this module is
+         supposed to avoid.
+         The amount is spelled by the model (formatLang, with the cart's
+         currency) rather than by a monetary widget: the sentence it sits in has
+         to be translatable as a whole, and a placeholder inside a formatted
+         number breaks word order in half the languages.
+         11.0 has no ``t-out``, so the label is escaped with ``t-esc``, which
+         is what that directive became, and its pages are still Bootstrap 3:
+         the bar is the progress bar of that toolkit, the success one being
+         ``progress-bar-success``. -->
+    <template id="fsb_bar" name="Free Delivery Progress Bar">
+        <t t-set="fsb" t-value="website_sale_order and website_sale_order._fsb_progress()"/>
+        <div t-if="fsb" class="o_fsb_bar" role="status" style="margin-bottom: 12px;"
+             t-att-data-fsb-reached="'1' if fsb['reached'] else '0'"
+             t-att-data-fsb-remaining="fsb['remaining']"
+             t-att-data-fsb-percent="fsb['percent']">
+            <div class="o_fsb_bar_label small" style="margin-bottom: 4px;"
+                 t-esc="fsb['label']"/>
+            <div class="progress o_fsb_bar_track" style="height: 8px;"
+                 role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                 t-att-aria-valuenow="fsb['percent']">
+                <div t-att-class="'progress-bar' + (' progress-bar-success' if fsb['reached'] else '')"
+                     t-att-style="'width: ' + str(fsb['percent']) + '%;'"/>
+            </div>
+        </div>
+    </template>
+
+    <!-- Above the total, inside the summary card: the shopper reads "add 20
+         more" and the total it refers to in one glance.
+         Up to 11.0 the total is a div with a fixed id holding one row per
+         amount, and the shop re-renders the whole block after a quantity
+         change, which is what makes the bar follow the cart without a line of
+         JavaScript. There is no table to anchor on before 12.0. -->
+    <template id="fsb_total" inherit_id="website_sale.total"
+              name="Free Delivery Bar in the Cart">
+        <xpath expr="//div[@id='cart_total']/div[@id='order_total_untaxed']"
+               position="before">
+            <t t-call="bs_free_shipping_bar.fsb_bar"/>
+        </xpath>
+    </template>
+
+</odoo>

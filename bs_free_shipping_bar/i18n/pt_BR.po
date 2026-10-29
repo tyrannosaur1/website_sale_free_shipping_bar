@@ -1,0 +1,107 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* bs_free_shipping_bar
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0-20251029\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-29 05:29+0000\n"
+"PO-Revision-Date: 2026-10-29\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: bs_free_shipping_bar
+#. odoo-python
+#: code:addons/bs_free_shipping_bar/models/sale_order.py:0
+msgid "Add %(amount)s more for free delivery"
+msgstr "Adicione mais %(amount)s para entrega grátis"
+
+#. module: bs_free_shipping_bar
+#: model:ir.model.fields,field_description:bs_free_shipping_bar.field_website__fsb_amount_basis
+msgid "Amount Compared"
+msgstr "Valor comparado"
+
+#. module: bs_free_shipping_bar
+#: model:ir.model.fields,help:bs_free_shipping_bar.field_website__fsb_free_shipping_threshold
+msgid "Amount, in the website currency, at which delivery becomes free. Zero turns the bar off, exactly like the switch above."
+msgstr "Valor, na moeda do site, a partir do qual a entrega fica gratuita. Zero desativa a barra, exatamente como a opção acima."
+
+#. module: bs_free_shipping_bar
+#: model_terms:ir.ui.view,arch_db:bs_free_shipping_bar.view_website_form_free_shipping
+msgid "Free Delivery"
+msgstr "Entrega grátis"
+
+#. module: bs_free_shipping_bar
+#: model:ir.model.fields,field_description:bs_free_shipping_bar.field_website__fsb_free_shipping_enabled
+msgid "Free Delivery Bar"
+msgstr "Barra de entrega grátis"
+
+#. module: bs_free_shipping_bar
+#: model:ir.module.module,shortdesc:base.module_bs_free_shipping_bar
+msgid "Free Delivery Progress Bar"
+msgstr "Barra de progresso para entrega grátis"
+
+#. module: bs_free_shipping_bar
+#: model:ir.model.fields,field_description:bs_free_shipping_bar.field_website__fsb_free_shipping_threshold
+msgid "Free Delivery Threshold"
+msgstr "Limite para entrega grátis"
+
+#. module: bs_free_shipping_bar
+#: model:ir.model.fields.selection,name:bs_free_shipping_bar.selection__website__fsb_amount_basis__untaxed
+msgid "Goods, tax excluded"
+msgstr "Mercadorias, sem impostos"
+
+#. module: bs_free_shipping_bar
+#: model:ir.model.fields.selection,name:bs_free_shipping_bar.selection__website__fsb_amount_basis__total
+msgid "Goods, tax included"
+msgstr "Mercadorias, com impostos"
+
+#. module: bs_free_shipping_bar
+#: model:ir.model,name:bs_free_shipping_bar.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venda"
+
+#. module: bs_free_shipping_bar
+#: model:ir.model.fields,help:bs_free_shipping_bar.field_website__fsb_free_shipping_enabled
+msgid "Show the progress bar towards free delivery in the cart and at checkout. Off by default: a shop that says nothing about free delivery must not start promising one."
+msgstr "Mostra a barra de progresso até a entrega grátis no carrinho e no checkout. Desativada por padrão: uma loja que não fala de entrega grátis não deve começar a prometê-la."
+
+#. module: bs_free_shipping_bar
+#: model:ir.module.module,summary:base.module_bs_free_shipping_bar
+msgid "Tell the shopper how much is left before delivery is free: a progress bar in the cart and at checkout, fed by the goods in the cart only."
+msgstr "Mostra ao comprador quanto falta para a entrega grátis: uma barra de progresso no carrinho e no checkout, alimentada apenas pelas mercadorias do carrinho."
+
+#. module: bs_free_shipping_bar
+#: model_terms:ir.ui.view,arch_db:bs_free_shipping_bar.view_website_form_free_shipping
+msgid ""
+"The bar counts the goods in the cart, never the delivery\n"
+"                        line. Leave the threshold at zero, or switch the bar\n"
+"                        off, to say nothing about free delivery on this site."
+msgstr "A barra conta as mercadorias do carrinho, nunca a linha de entrega. Deixe o limite em zero, ou desative a barra, para não informar nada sobre entrega grátis neste site."
+
+#. module: bs_free_shipping_bar
+#: model:ir.model,name:bs_free_shipping_bar.model_website
+msgid "Website"
+msgstr "Site"
+
+#. module: bs_free_shipping_bar
+#: model:ir.model.fields,help:bs_free_shipping_bar.field_website__fsb_amount_basis
+msgid "Which goods total the threshold is compared with. Delivery is never part of it: the bar measures what the customer is buying, not what the carrier charges."
+msgstr "Com qual total de mercadorias o limite é comparado. A entrega nunca faz parte dele: a barra mede o que o cliente compra, não o que a transportadora cobra."
+
+#. module: bs_free_shipping_bar
+#. odoo-python
+#: code:addons/bs_free_shipping_bar/models/sale_order.py:0
+msgid "You have free delivery"
+msgstr "Você tem entrega grátis"
+
+#. module: bs_free_shipping_bar
+#: model_terms:ir.ui.view,arch_db:bs_free_shipping_bar.view_website_form_free_shipping
+msgid "e.g. 50.00"
+msgstr "ex.: 50,00"
