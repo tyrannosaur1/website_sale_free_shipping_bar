@@ -2,7 +2,7 @@
 
 Tell the shopper how much is left before delivery is free: a bar in the cart and at checkout, fed by the goods in the cart only.
 
-Odoo 16.0 – 20.0. One tree per series under `.series/`, the 20.0 tree at the top of the repository.
+Odoo 10.0 – 20.0. One branch per series, the branch name is the series.
 
 ## What it does
 
