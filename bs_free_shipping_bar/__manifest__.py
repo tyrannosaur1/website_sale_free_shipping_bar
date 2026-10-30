@@ -6,7 +6,9 @@
                "progress bar in the cart and at checkout, fed by the goods in "
                "the cart only.",
     "author": "ModForge",
-    "images": ["static/description/cover.png"],
+    "images": ["static/description/cover.png",
+               "static/description/screenshot_1.png",
+               "static/description/screenshot_2.png"],
     "license": "OPL-1",
     "category": "Website/Website",
     "depends": ["website_sale", "delivery"],
