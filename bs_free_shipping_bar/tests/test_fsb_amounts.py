@@ -176,7 +176,18 @@ class FreeShippingAmountCase(TransactionCase):
         if other == website_currency:
             other = self.env.ref("base.USD")
         other.active = True
-        self.env["res.currency.rate"].create({
+        # Both sides are pinned. The demo database ships rates for these
+        # currencies -- the company's included -- some of them dated after
+        # 2020, and any of those would win over the pair written here: the
+        # conversion would then use a rate nobody in this test chose.
+        rates = self.env["res.currency.rate"]
+        rates.search(
+            [("currency_id", "in", (website_currency | other).ids)]).unlink()
+        rates.create({
+            "currency_id": website_currency.id, "rate": 1.0,
+            "name": "2020-01-01",
+        })
+        rates.create({
             "currency_id": other.id, "rate": 2.0, "name": "2020-01-01",
         })
         pricelist = self.env["product.pricelist"].create({
